@@ -2,9 +2,12 @@
 this.xpos=0;
 this.ypos=0;
 this.vel=3;
+var canvas;
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
+	canvas=createCanvas(windowWidth, windowHeight);
+	canvas.position(0,0);
+	canvas.style('z-index',-1);
 	background(100);
 
 }
