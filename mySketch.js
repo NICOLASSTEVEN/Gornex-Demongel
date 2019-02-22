@@ -2,12 +2,9 @@
 this.xpos=0;
 this.ypos=0;
 this.vel=3;
-var canvas;
 
 function setup() {
-	canvas=createCanvas(windowWidth, windowHeight);
-	canvas.position(0,0);
-	canvas.style('z-index',-1);
+	createCanvas(windowWidth, windowHeight);
 	background(100);
 
 }
@@ -22,9 +19,11 @@ function draw() {
 	}	
 	
 	this.ypos = this.ypos - this.vel;
-	if(this.ypos < 1 ){
-	 this.ypos = 1900;
+	if(this.ypos < 0 ){
+	 this.ypos = 1400;
 	}	
+	
+	
 	
 	fill(91, 44, 111,50);
 	ellipse(this.xpos,random(2000),random(200),random(200));
@@ -37,5 +36,8 @@ function draw() {
 	
 	fill(189, 195, 199 ,50);
 	ellipse(this.ypos,random(2000),random(200),random(200));
+	
+	fill(289,205, 199 ,50);
+	rect(random(2000),random(2000),random(200),random(200));
 	
 }
