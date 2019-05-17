@@ -1,4 +1,4 @@
-// noprotect
+
 var drops = [];
 var FRAME_A = 5;
 var MAX_X_ACCEL = 0.025; 
@@ -9,12 +9,19 @@ var MIN_RAD = 3;
 var MAX_RAD = 6; 
 var MIN_RG = 64; 
 var MAX_RG = 255; 
-var button;
-var button1;
+
+var particles_a = [];
+var particles_b = [];
+var particles_c = [];
+var frequency = 300;  //frequency, number of particle objects
+var noisePattern = 900;  //noise value for perlin flow equation
+var particleRadius = 1;  //thickness of the particles (lines)
 
 this.xpos=0;
 this.ypos=0;
 this.vel=3;
+
+
 
 function setup() {
 	
@@ -25,16 +32,16 @@ function setup() {
 	colorMode(RGB, 250, 305, 255, 500);
 	ellipseMode(RADIUS);
 	background(100);
-  
 	
 SPAWN_MIN_X = windowWidth / 10;
 	SPAWN_MAX_X = SPAWN_MIN_X * 9;
-   
 	
-	
+	for(var i = 0; i < frequency; i++){
+		particles_a[i] = new Particle();
+		particles_b[i] = new Particle();
+		particles_c[i] = new Particle();
+	}
 }
-
-
 
 function draw() {
 	
@@ -52,20 +59,31 @@ function draw() {
 	
 	
 	
-	fill(		50,	5,	165,90);
-	ellipse(this.xpos,random(2000),random(50),random(50));
-	
-	fill(	154,	15,	113,90);
-	ellipse(random(2000),this.xpos,random(50),random(50));
-	
-	fill(	93	,45,	212,90);
-	ellipse(random(2000),this.ypos,random(50),random(50));
-	
-	fill(52	,151	,180 ,90);
-	ellipse(this.ypos,random(2000),random(50),random(50));
-	
-	fill(	171,	26,	48 ,90);
-	ellipse(random(2000),random(2000),random(50),random(50));
+	for(var i = 0; i < frequency; i++){
+		var a = map(i,0,frequency,0,250);
+
+        //particle array A
+		fill(particles_a[i].c, a);
+		particles_a[i].move();
+        particles_a[i].show(particleRadius);
+		particles_a[i].edges();
+        particles_a[i].checkColor(167, 138, 112, 206, 252, 253); //light-colors
+
+        //particle array B
+		fill(particles_b[i].c, a);
+		particles_b[i].move();
+		particles_b[i].show(particleRadius);
+		particles_b[i].edges();
+        particles_b[i].checkColor(146, 70, 32, 37, 55, 139); //midi-colors
+          
+        //particle array C
+		fill(particles_c[i].c, a);
+		particles_c[i].move();
+		particles_c[i].show(particleRadius);
+		particles_c[i].edges();
+		particles_c[i].checkColor(119, 75, 59, 77, 113, 210); //dark-colors
+
+	}  
 	
 	background(0, 0, 0, FRAME_A);
 	drops.push(new drop()); // add a new drop each frame
@@ -84,7 +102,6 @@ function draw() {
 
 function texto(){
 	noStroke();
-	
 	
 
 	
@@ -135,3 +152,4 @@ function drop() {
 }
 
  
+

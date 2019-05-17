@@ -14,6 +14,8 @@ body {
    
 	}
 
+
+
 .txt[contenteditable] {
   outline: none;
 }
@@ -22,7 +24,7 @@ body {
 
 #box {
   padding:120px;
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
 }
 
@@ -31,18 +33,18 @@ body {
 
 .txt {
   color: hsla(0,0%,0%,0);
-  text-shadow: #fff 0 0 60px;
-  transition: text-shadow 2s cubic-bezier(0, 1, 0, 1);
+  text-shadow: #000000 0 0 60px;
+  transition: text-shadow 5s cubic-bezier(0, 1, 0, 1);
 	}
-	@-moz-document url-prefix() { .txt { text-shadow: #fff 0 0 20px; } } /* FF fix */
+	@-moz-document url-prefix() { .txt { text-shadow: #000000 0 0 90px; } } /* FF fix */
 
 #box:hover .txt {
-		text-shadow: #fff 0 0 3px;
-		transition: text-shadow 1s cubic-bezier(0, 0.75, 0, 1);
+		text-shadow: #fff 0 0 2px;
+		transition: text-shadow 3s cubic-bezier(0, 0.75, 0, 1);
 }
 
 .class-name {
-  opacity:0.5;
+  opacity:10;
 }
 
 .button {
