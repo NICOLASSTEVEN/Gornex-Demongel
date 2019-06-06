@@ -84,3 +84,21 @@ body {
     top:1px
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "fondo . . . . . ." ". . titulo titulo titulo . ." ". . . . . . ." ". boton1 boton1 . boton-2 boton-2 ." ". . . . . . ." ". boton3 boton3 . boton-4 boton-4 ." ". . . . . . .";
+}
+
+.titulo { grid-area: titulo; }
+
+.boton1 { grid-area: boton1; }
+
+.boton-2 { grid-area: boton-2; }
+
+.boton3 { grid-area: boton3; }
+
+.boton-4 { grid-area: boton-4; }
+
+.fondo { grid-area: fondo; }
