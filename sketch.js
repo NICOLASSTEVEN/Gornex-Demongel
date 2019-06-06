@@ -29,18 +29,26 @@ function setup() {
   fondo.position(0,0);
   fondo.style('z-index',-1);
   fondo.parent('fondo1');
+  
+  
 	colorMode(RGB, 250, 305, 255, 500);
 	ellipseMode(RADIUS);
 	background(100);
 	
-SPAWN_MIN_X = windowWidth / 10;
+    SPAWN_MIN_X = windowWidth / 10;
 	SPAWN_MAX_X = SPAWN_MIN_X * 9;
+  
+  
+  
 	
 	for(var i = 0; i < frequency; i++){
 		particles_a[i] = new Particle();
 		particles_b[i] = new Particle();
 		particles_c[i] = new Particle();
 	}
+  
+  
+  
 }
 
 function draw() {
@@ -151,5 +159,48 @@ function drop() {
 	};
 }
 
+ function windowResized(){
+ resizeCanvas(windowWidth, windowHeight);
+   background(0, 0, 0, FRAME_A);
+  for(var i = 0; i < frequency; i++){
+		particles_a[i] = new Particle();
+		particles_b[i] = new Particle();
+		particles_c[i] = new Particle();
+	} 
+   
+   for(var i = 0; i < frequency; i++){
+		var a = map(i,0,frequency,0,250);
+
+        //particle array A
+		fill(particles_a[i].c, a);
+		particles_a[i].move();
+        particles_a[i].show(particleRadius);
+		particles_a[i].edges();
+        particles_a[i].checkColor(167, 138, 112, 206, 252, 253); //light-colors
+
+        //particle array B
+		fill(particles_b[i].c, a);
+		particles_b[i].move();
+		particles_b[i].show(particleRadius);
+		particles_b[i].edges();
+        particles_b[i].checkColor(146, 70, 32, 37, 55, 139); //midi-colors
+          
+        //particle array C
+		fill(particles_c[i].c, a);
+		particles_c[i].move();
+		particles_c[i].show(particleRadius);
+		particles_c[i].edges();
+		particles_c[i].checkColor(119, 75, 59, 77, 113, 210); //dark-colors
+
+	}  
+   
+	for (var i = drops.length - 1; i >= 0; i--) {
+		drops[i].Run();
+		
+		if (!drops[i].isAlive()) {
+			drops.splice(i, 1);
+		}
+	}
  
+ }
 
