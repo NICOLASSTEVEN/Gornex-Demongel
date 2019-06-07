@@ -9,12 +9,24 @@ body {
   height: 100%;
   text-align: center;
   font-family: "Segoe Print", Lucida, Verdana, sans-serif;
- 
-	 
-   
 	}
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  grid-template-rows: 100px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". . . titulo titulo titulo titulo . ." ". . . . . . . . ." ". . . . . . . . ." ". . . . . . . . ." ". . . . . . . . ." ". . boton1 . . . boton2 . ." ". . . . . . . . ." ". . boton3 . . . boton4 . .";
+}
 
+.boton1 { grid-area: boton1; }
+
+.boton2 { grid-area: boton2; }
+
+.boton3 { grid-area: boton3; }
+
+.boton4 { grid-area: boton4; }
+
+.titulo { grid-area: titulo; }
 
 .txt[contenteditable] {
   outline: none;
@@ -23,8 +35,8 @@ body {
 /* Box ------------------------------------------------------ */
 
 #box {
-  padding:120px;
-  font-size: 3em;
+  padding:10px;
+  font-size: 2.5em;
   font-weight: bold;
 }
 
